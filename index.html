@@ -8,7 +8,6 @@
   
   <title>Frontend Mentor | Todo app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
@@ -17,35 +16,46 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!--this is for the background image behind the todo box-->
+  <div class="bg-image"></div>
+
+  <!--this is the main body of the todo app-->
+  <main class="container">
+
+    <!--this is the header for logo and name of the app-->
+    <section class="header">
+      <h1>Todo</h1>
+      <button class="theme-toggle" id="theme-toggle">
+      <img src="images/icon-sun.svg" alt="night-mode" class="theme-icon">
+     
+    </section>
    
-<div class="container">
-  <header>
-        <h1>TODO</h1>
-        <button class="theme">
-            <img src="images/icon-sun.svg" alt="Toggle Theme">
-        </button>
-  </header>
-    <main>
-        <div class="todo-input">
-            <input type="text" placeholder="Create a new todo...">
-        </div>
-        <div class="todo-list" id="todo-list">
-          <div class="todo-item completed" draggable="true">
-              <img src="images/icon-check.svg">
-              <span>bakchodi
-              </span>
-          </div>
-  <div class="todo-footer">
-            <span>5 items left</span>
-            <div class="filters">
-                <button class="filter active">All</button>
-                <button class="filter">Active</button>
-                <button class="filter">Completed</button>
-            </div>
-            <button class="clear-completed">Clear Completed</button>
-        </div>
+    <!--this is the section for the input box-->
+    
+    <section class="inputbox"></div>
+      <div class="checkbox"></div>
+      <input type="text" placeholder="Create a new todo...">
+    </section>
+    
+    <!--this is the section for adding and removing tasks-->
+    <section class="tasks"></section>
+      
+    <!--this is the section for different switches-->
+    <section class="switches">
+      <div class="one">items left</div>
+      <div class="two">
+        <h2>All</h2>
+        <h2>Active</h2>
+        <h2>Completed</h2>
+      </div>
+      <div class="three">Clear Completed</div>
+    </section>
+
   </main>
-</div>
-<div>Drag and drop to reorder list</div>
+
+  <!--this is the footnote-->
+  <div class="foot-note">Drag and drop to reorder list</div>
+  <script src="script.js"></script>
+  
 </body>
 </html>

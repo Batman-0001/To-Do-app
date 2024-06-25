@@ -1,0 +1,23 @@
+
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    z-index: -1;
+    transition: background-image 0.5s;
+}
+
+
+body.light .bg-image {
+    background-image: url('./images/bg-desktop-light.jpg');
+}
+
+body.dark .bg-image {
+    background-image: url('./images/bg-desktop-dark.jpg');
+}
+
