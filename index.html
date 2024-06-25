@@ -13,9 +13,11 @@
     .attribution a { color: hsl(228, 45%, 44%); }
     
   </style>
-  <link rel="stylesheet" href="style.css">
+  <link href="./style.css" rel="stylesheet">
+
+  <script src="./script.js" defer></script>
 </head>
-<body>
+<body class="light">
   <!--this is for the background image behind the todo box-->
   <div class="bg-image"></div>
 
@@ -25,9 +27,7 @@
     <!--this is the header for logo and name of the app-->
     <section class="header">
       <h1>Todo</h1>
-      <button class="theme-toggle" id="theme-toggle">
-      <img src="images/icon-sun.svg" alt="night-mode" class="theme-icon">
-     
+      <div class="theme-toggle light"><img src="./images/icon-moon.svg" alt="light-mode" class="theme-icon"></div> 
     </section>
    
     <!--this is the section for the input box-->
@@ -55,7 +55,6 @@
 
   <!--this is the footnote-->
   <div class="foot-note">Drag and drop to reorder list</div>
-  <script src="script.js"></script>
   
 </body>
 </html>
