@@ -12,26 +12,40 @@
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
+    
   </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  Todo
-
-  <!-- Add dynamic number --> items left
-
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
-
-  <h1>hey</h1>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+   
+<div class="container">
+  <header>
+        <h1>TODO</h1>
+        <button class="theme">
+            <img src="images/icon-sun.svg" alt="Toggle Theme">
+        </button>
+  </header>
+    <main>
+        <div class="todo-input">
+            <input type="text" placeholder="Create a new todo...">
+        </div>
+        <div class="todo-list" id="todo-list">
+          <div class="todo-item completed" draggable="true">
+              <img src="images/icon-check.svg">
+              <span>bakchodi
+              </span>
+          </div>
+  <div class="todo-footer">
+            <span>5 items left</span>
+            <div class="filters">
+                <button class="filter active">All</button>
+                <button class="filter">Active</button>
+                <button class="filter">Completed</button>
+            </div>
+            <button class="clear-completed">Clear Completed</button>
+        </div>
+  </main>
+</div>
+<div>Drag and drop to reorder list</div>
 </body>
 </html>
