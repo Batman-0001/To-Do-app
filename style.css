@@ -17,12 +17,15 @@
     --dark-grayish-blue: hsl(234, 11%, 52%);
     --very-dark-grayish-blue: hsl(233, 14%, 35%);
 }
+
 /*body of the html document*/
 body {
     width: 100vw;
     min-height: 100vh;
-    background-color: hsl(236, 33%, 92%);
+    background-color: var(--very-light-grayish-blue);
     position: relative;
+    font-family: "Josefin Sans";
+
     /*image tag inside the body*/
     .bg-image {
         position: fixed;
@@ -43,31 +46,84 @@ body {
 main.container {
     width: 40%;
     display: grid;
-    gap: 0;
-    grid-template-rows: 1fr 1fr 1fr;
+    gap: 3em;
+    grid-template-rows: 1fr 1fr auto;
     position: absolute;
     left: 30%;
     top: 10%;
-    /*header section containg 'todo" and logo*/
-    .header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        /*h1 which contains the "todo" heading*/
-        h1{
-            margin: 0;
-        }
-    }
-    section.inputbox {
+
+    /*this is the header of the main body*/
+    section.header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .checkbox {
-            height: 5%;
-            width: 5%;
-            background-color: black;
+    }
+
+    /*this is the input container present in the body*/
+    section.inputbox{
+        display: grid;
+        grid-template-columns: 0.5fr 5fr;
+
+        /*this is the custom checkbox*/
+        div.checkbox {
+            height: 1em;
+            width: 1em;
+            border-radius: 50%;
+            border: 2px solid black;
+            align-self: center;
+            justify-self: center;
+        }
+
+        /*this is the input element*/
+        input {
+            width: 90%;
+            height: 50%;
+            font-size: x-large;
+            border: none;
+            align-self: center;
+            justify-self: self-start;
+        }
+
+        /*this is the input when focused*/
+        input:focus {
+            outline: none;
+            caret-color: red;
         }
     }
+
+    /*this is the task and switches section*/
+    section.task-n-switches {
+        display: grid;
+        grid-template-rows: auto 1fr;
+
+        /*this is the section for switches*/
+        section.switches {
+           display: grid;
+           grid-template-columns: 1fr 3fr 1.3fr;
+
+           /*targets all the divs*/
+           div {
+            align-self: center;
+            justify-self: center;
+           }
+
+           /*targets second div*/
+           div.two{
+            display: grid;
+            grid-template-columns: 0.8fr 1fr 1fr;
+           }
+        }
+    }
+    
+}
+
+/*this targets the foot-note div at the bottom of the main container*/
+div.foot-note {
+    position: absolute;
+    left: 30%;
+    top: 45%;
+    width: 40%;
+    text-align: center;
 }
 
 

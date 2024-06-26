@@ -20,3 +20,8 @@ themeToggle.addEventListener('click', () => {
   }
 
 });
+
+const input = document.querySelector(".inputbox input");
+input.addEventListener("click", (e) => {
+  input.style.border = "2px solid orange";
+});
