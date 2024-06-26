@@ -1,0 +1,130 @@
+:root {
+    /*primary color*/
+    --bright-blue: hsl(220, 98%, 61%);
+
+    /*light mode colors*/
+    --very-light-grey: hsl(0, 0%, 98%);
+    --very-light-grayish-blue: hsl(236, 33%, 92%);
+    --light-grayish-blue: hsl(233, 11%, 84%);
+    --dark-grayish-blue: hsl(236, 9%, 61%);
+    --very-dark-grayish-blue: hsl(235, 19%, 35%);
+
+    /*dark mode colors*/
+    --very-dark-blue: hsl(235, 21%, 11%);
+    --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+    --light-grayish-blue: hsl(234, 39%, 85%);
+    --light-grayish-blue-onhover: hsl(236, 33%, 92%);
+    --dark-grayish-blue: hsl(234, 11%, 52%);
+    --very-dark-grayish-blue: hsl(233, 14%, 35%);
+}
+
+/*body of the html document*/
+body {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: var(--very-light-grayish-blue);
+    position: relative;
+    font-family: "Josefin Sans";
+
+    /*image tag inside the body*/
+    .bg-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        background-image: url("./images/bg-desktop-light.jpg");
+        background-size: cover;
+        background-position: center; 
+        background-repeat: no-repeat; 
+        z-index: -1;
+        transition: background-image 0.5s;
+    }    
+}
+
+/*main container which contains all the sections*/
+main.container {
+    width: 40%;
+    display: grid;
+    gap: 3em;
+    grid-template-rows: 1fr 1fr auto;
+    position: absolute;
+    left: 30%;
+    top: 10%;
+
+    /*this is the header of the main body*/
+    section.header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /*this is the input container present in the body*/
+    section.inputbox{
+        display: grid;
+        grid-template-columns: 0.5fr 5fr;
+
+        /*this is the custom checkbox*/
+        div.checkbox {
+            height: 1em;
+            width: 1em;
+            border-radius: 50%;
+            border: 2px solid black;
+            align-self: center;
+            justify-self: center;
+        }
+
+        /*this is the input element*/
+        input {
+            width: 90%;
+            height: 50%;
+            font-size: x-large;
+            border: none;
+            align-self: center;
+            justify-self: self-start;
+        }
+
+        /*this is the input when focused*/
+        input:focus {
+            outline: none;
+            caret-color: red;
+        }
+    }
+
+    /*this is the task and switches section*/
+    section.task-n-switches {
+        display: grid;
+        grid-template-rows: auto 1fr;
+
+        /*this is the section for switches*/
+        section.switches {
+           display: grid;
+           grid-template-columns: 1fr 3fr 1.3fr;
+
+           /*targets all the divs*/
+           div {
+            align-self: center;
+            justify-self: center;
+           }
+
+           /*targets second div*/
+           div.two{
+            display: grid;
+            grid-template-columns: 0.8fr 1fr 1fr;
+           }
+        }
+    }
+    
+}
+
+/*this targets the foot-note div at the bottom of the main container*/
+div.foot-note {
+    position: absolute;
+    left: 30%;
+    top: 45%;
+    width: 40%;
+    text-align: center;
+}
+
+
+
