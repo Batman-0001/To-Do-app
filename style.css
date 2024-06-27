@@ -25,7 +25,7 @@ body {
     background-color: var(--very-light-grayish-blue);
     position: relative;
     font-family: "Josefin Sans";
-
+    font-weight: 400;
     /*image tag inside the body*/
     .bg-image {
         position: fixed;
@@ -46,7 +46,7 @@ body {
 main.container {
     width: 40%;
     display: grid;
-    gap: 3em;
+    gap: 2em;
     grid-template-rows: 1fr 1fr auto;
     position: absolute;
     left: 30%;
@@ -57,19 +57,22 @@ main.container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: var(--very-light-grey);
+        font-weight: 700;
     }
 
     /*this is the input container present in the body*/
     section.inputbox{
         display: grid;
         grid-template-columns: 0.5fr 5fr;
+        background-color: var(--very-light-grey);
 
         /*this is the custom checkbox*/
         div.checkbox {
-            height: 1em;
-            width: 1em;
+            height: 1.3em;
+            width: 1.3em;
             border-radius: 50%;
-            border: 2px solid black;
+            border: 1.5px solid var(--light-grayish-blue);
             align-self: center;
             justify-self: center;
         }
@@ -77,11 +80,13 @@ main.container {
         /*this is the input element*/
         input {
             width: 90%;
-            height: 50%;
-            font-size: x-large;
+            font-family: "Josefin Sans";
+            font-size: 1.3em;
             border: none;
+            padding: 0;
             align-self: center;
             justify-self: self-start;
+            background-color: var(--very-light-grey);
         }
 
         /*this is the input when focused*/
@@ -95,6 +100,7 @@ main.container {
     section.task-n-switches {
         display: grid;
         grid-template-rows: auto 1fr;
+        background-color: var(--very-light-grey);
 
         /*this is the section for switches*/
         section.switches {
@@ -105,6 +111,7 @@ main.container {
            div {
             align-self: center;
             justify-self: center;
+            cursor: pointer;
            }
 
            /*targets second div*/
