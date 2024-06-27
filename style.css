@@ -47,7 +47,7 @@ main.container {
     width: 40%;
     display: grid;
     gap: 2em;
-    grid-template-rows: 1.5fr 1fr auto;
+    grid-template-rows: 1.5fr 1fr auto 1fr;
     position: absolute;
     left: 30%;
     top: 10%;
@@ -105,10 +105,34 @@ main.container {
         background-color: var(--very-light-grey);
         border-radius: 0.3em;
 
+        section.tasks {
+            color: var(--very-dark-grayish-blue);
+
+            div.task {
+                display: grid;
+                grid-template-columns: 0.5fr 5fr;
+                border-bottom: 1px solid var(--light-grayish-blue);
+
+                .check {
+                    height: 1.4em;
+                    width: 1.4em;
+                    border-radius: 50%;
+                    border: 1.5px solid var(--light-grayish-blue);
+                    align-self: center;
+                    justify-self: center;
+                }
+                
+                p {
+                    font-size: 1.3em;
+                }
+            }
+        }
+        
         /*this is the section for switches*/
         section.switches {
            display: grid;
            grid-template-columns: 1fr 3fr 1.3fr;
+           color: var(--dark-grayish-blue);
 
            /*targets all the divs*/
            div {
@@ -117,10 +141,15 @@ main.container {
             cursor: pointer;
            }
 
+           div:hover p{
+            color: var(--very-dark-grayish-blue);
+           }
+
            /*targets second div*/
            div.two{
             display: grid;
             grid-template-columns: 0.8fr 1fr 1fr;
+            font-weight: 700;
            }
         }
     }
@@ -129,10 +158,6 @@ main.container {
 
 /*this targets the foot-note div at the bottom of the main container*/
 div.foot-note {
-    position: absolute;
-    left: 30%;
-    top: 47%;
-    width: 40%;
     text-align: center;
 }
 
