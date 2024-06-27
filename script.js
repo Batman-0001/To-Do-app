@@ -21,7 +21,48 @@ themeToggle.addEventListener('click', () => {
 
 });
 
+//adding crud application feature in website
 const input = document.querySelector(".inputbox input");
-input.addEventListener("click", (e) => {
-  input.style.border = "2px solid orange";
+const tasks = document.querySelector(".tasks");
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === 'Enter' && input.value !== "") {
+
+    const task = document.createElement("div");
+    const checkbox = document.createElement("div");
+    const para = document.createElement("p");
+    const image = document.createElement("img");
+    
+    task.setAttribute("class", "task");
+    checkbox.setAttribute("class", "check");
+    image.setAttribute("src","./images/icon-cross.svg");
+    image.setAttribute("alt", "delete the task");
+    para.textContent = input.value;
+    input.value = "";
+
+    task.appendChild(checkbox);
+    task.appendChild(para);
+    task.appendChild(image);
+    
+    tasks.appendChild(task);
+
+    image.addEventListener("click", (e) => {
+      e.target.parentNode.remove();
+    });
+
+    checkbox.addEventListener("click", () => {
+      const checked = checkbox.classList.toggle("checked");
+      if(checked) {
+        checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))";
+        para.style.color = "hsl(236, 9%, 61%)";
+        para.style.textDecoration = "line-through";
+      }
+      else {
+        checkbox.style.background = "hsl(0, 0%, 98%)";
+        para.style.color = "hsl(235, 19%, 35%)";
+        para.style.textDecoration = "none";
+      }
+    });
+  }
+  
 });

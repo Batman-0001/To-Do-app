@@ -110,20 +110,26 @@ main.container {
 
             div.task {
                 display: grid;
-                grid-template-columns: 0.5fr 5fr;
+                grid-template-columns: 0.5fr 5fr 0.5fr;
                 border-bottom: 1px solid var(--light-grayish-blue);
 
                 .check {
                     height: 1.4em;
                     width: 1.4em;
+                    border: 1px solid var(--light-grayish-blue);
+                    position: relative;
                     border-radius: 50%;
-                    border: 1.5px solid var(--light-grayish-blue);
                     align-self: center;
                     justify-self: center;
                 }
                 
                 p {
                     font-size: 1.3em;
+                }
+
+                img {
+                    align-self: center;
+                    justify-self: center;
                 }
             }
         }
@@ -141,7 +147,7 @@ main.container {
             cursor: pointer;
            }
 
-           div:hover p{
+           div p:hover{
             color: var(--very-dark-grayish-blue);
            }
 
