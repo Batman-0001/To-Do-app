@@ -5,7 +5,7 @@ const bgImage = document.querySelector('.bg-image');
 
 themeToggle.addEventListener('click', () => {
   //selecting the specific class by addition of which toggle will occur
-  const isDark = themeToggle.classList.toggle('dark');
+  const isDark = document.body.classList.toggle('dark');
   
   //changing the background image dynamically by using toggle
   if (isDark) {

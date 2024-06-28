@@ -94,7 +94,7 @@ main.container {
         /*this is the input when focused*/
         input:focus {
             outline: none;
-            caret-color: red;
+            caret-color: var(--bright-blue);
         }
     }
 
