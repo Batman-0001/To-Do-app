@@ -25,6 +25,7 @@ themeToggle.addEventListener('click', () => {
 const input = document.querySelector(".inputbox input");
 const tasks = document.querySelector(".tasks");
 
+//adding event listener to the input box and add the functionality
 input.addEventListener("keydown", (e) => {
   if (e.key === 'Enter' && input.value !== "") {
 
@@ -52,16 +53,19 @@ input.addEventListener("keydown", (e) => {
 
     checkbox.addEventListener("click", () => {
       const checked = checkbox.classList.toggle("checked");
+
       if(checked) {
         checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))";
         para.style.color = "hsl(236, 9%, 61%)";
         para.style.textDecoration = "line-through";
       }
+
       else {
         checkbox.style.background = "hsl(0, 0%, 98%)";
         para.style.color = "hsl(235, 19%, 35%)";
         para.style.textDecoration = "none";
       }
+      
     });
   }
   
