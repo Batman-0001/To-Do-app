@@ -89,6 +89,7 @@ main.container {
             align-self: center;
             justify-self: self-start;
             background-color: var(--very-light-grey);
+            color: var(--very-dark-grayish-blue);
         }
 
         /*this is the input when focused*/
@@ -112,6 +113,7 @@ main.container {
                 display: grid;
                 grid-template-columns: 0.5fr 5fr 0.5fr;
                 border-bottom: 1px solid var(--light-grayish-blue);
+                cursor: pointer;
 
                 .check {
                     height: 1.4em;
@@ -130,6 +132,14 @@ main.container {
                 img {
                     align-self: center;
                     justify-self: center;
+                    visibility: hidden;
+                }
+            }
+
+            div.task:hover{
+                
+                img {
+                    visibility: visible;
                 }
             }
         }
@@ -165,6 +175,65 @@ main.container {
 /*this targets the foot-note div at the bottom of the main container*/
 div.foot-note {
     text-align: center;
+    font-size: 1em;
+    color: var(--dark-grayish-blue);
+    font-weight: 700;
+}
+
+/*this is the styling of the dark mode of the website*/
+
+body.dark {
+    background-color: var(--very-dark-blue);
+
+    .bg-image {
+        background-image: url("./images/bg-desktop-dark.jpg");
+    }
+}
+
+body.dark main.container {
+
+    section.inputbox {
+        background-color: var(--very-dark-desaturated-blue);
+        
+        div.checkbox {
+            background-color: var(--very-dark-desaturated-blue);
+            border-color: var(--dark-grayish-blue);
+        }
+
+        input {
+            background-color: var(--very-dark-desaturated-blue);
+            color: var(--light-grayish-blue);
+        }
+    }
+
+    section.task-n-switches {
+        background-color: var(--very-dark-desaturated-blue);
+
+        section.tasks {
+            color: var(--light-grayish-blue);
+
+            div.task {
+                border-bottom: 1px solid var(--dark-grayish-blue);
+
+                .check {
+                    border-color: var(--dark-grayish-blue);
+                }
+                
+            }
+        }
+
+        section.switches {
+            color: var(--dark-grayish-blue);
+
+            div p:hover {
+                color: var(--light-grayish-blue-onhover);
+            }
+        }
+    }
+}
+
+body.dark div.foot-note {
+    color: var(--dark-grayish-blue);
 }
 
 
