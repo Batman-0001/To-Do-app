@@ -60,6 +60,36 @@ input.addEventListener("keydown", (e) => {
   
 });
 
+//adding event listeners to the elements
+function addEventListeners(task) {
+  const checkbox = task.querySelector(".check");
+  const para = task.querySelector("p");
+  const image = task.querySelector("img");
+  
+  image.addEventListener("click", (e) => {
+    e.currentTarget.parentNode.remove();
+  });
+
+  checkbox.addEventListener("click", () => {
+    const checked = checkbox.classList.toggle("checked");
+
+    if(checked) {
+      checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))";
+      para.style.color = "hsl(236, 9%, 61%)";
+      para.style.textDecoration = "line-through";
+    }
+
+    else {
+      checkbox.style.background = "hsl(0, 0%, 98%)";
+      para.style.color = "hsl(235, 19%, 35%)";
+      para.style.textDecoration = "none";
+    }
+    
+  });
+  
+}
+
+
 //ading the drag and drop feature to the app
 let draggable;
 
@@ -92,30 +122,3 @@ function dragEnd(event) {
   event.preventDefault();
 }
 
-function addEventListeners(task) {
-  const checkbox = task.querySelector(".check");
-  const para = task.querySelector("p");
-  const image = task.querySelector("img");
-  
-  image.addEventListener("click", (e) => {
-    e.currentTarget.parentNode.remove();
-  });
-
-  checkbox.addEventListener("click", () => {
-    const checked = checkbox.classList.toggle("checked");
-
-    if(checked) {
-      checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))";
-      para.style.color = "hsl(236, 9%, 61%)";
-      para.style.textDecoration = "line-through";
-    }
-
-    else {
-      checkbox.style.background = "hsl(0, 0%, 98%)";
-      para.style.color = "hsl(235, 19%, 35%)";
-      para.style.textDecoration = "none";
-    }
-    
-  });
-  
-}
