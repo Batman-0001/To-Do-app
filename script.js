@@ -45,26 +45,77 @@ input.addEventListener("keydown", (e) => {
     
     tasks.appendChild(task);
 
-    image.addEventListener("click", (e) => {
-      e.target.parentNode.remove();
-    });
+    addEventListeners(task);
 
-    checkbox.addEventListener("click", () => {
-      const checked = checkbox.classList.toggle("checked");
+    tasks.querySelectorAll(".task").forEach((item) => {
+      item.setAttribute("draggable", "true");
+      item.addEventListener("dragstart", dragStart);
+      item.addEventListener("dragenter", dragEnter);
+      item.addEventListener("dragover", dragOver);
+      item.addEventListener("drop", drop);
+      item.addEventListener("dragend", dragEnd);
+    }); 
 
-      if(checked) {
-        checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))";
-        para.style.color = "hsl(236, 9%, 61%)";
-        para.style.textDecoration = "line-through";
-      }
-
-      else {
-        checkbox.style.background = "hsl(0, 0%, 98%)";
-        para.style.color = "hsl(235, 19%, 35%)";
-        para.style.textDecoration = "none";
-      }
-      
-    });
   }
   
 });
+
+//ading the drag and drop feature to the app
+let draggable;
+
+function dragStart(event) {
+    event.dataTransfer.setData("text/html", event.currentTarget.innerHTML);
+    event.dataTransfer.effectAllowed = "move";
+    addEventListeners(event.currentTarget);  
+}
+
+function dragEnter(event){
+  event.preventDefault();
+}
+
+function dragOver(event) {
+  event.preventDefault();
+}
+
+function drop(event) {
+  draggable = event.currentTarget.innerHTML;
+  const data = event.dataTransfer.getData("text/html");
+  event.dataTransfer.dropEffect = "move";
+  event.currentTarget.innerHTML = data;
+  addEventListeners(event.currentTarget);
+  event.preventDefault();
+}
+
+function dragEnd(event) {
+  event.currentTarget.innerHTML = draggable;
+  addEventListeners(event.currentTarget);
+  event.preventDefault();
+}
+
+function addEventListeners(task) {
+  const checkbox = task.querySelector(".check");
+  const para = task.querySelector("p");
+  const image = task.querySelector("img");
+  
+  image.addEventListener("click", (e) => {
+    e.currentTarget.parentNode.remove();
+  });
+
+  checkbox.addEventListener("click", () => {
+    const checked = checkbox.classList.toggle("checked");
+
+    if(checked) {
+      checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))";
+      para.style.color = "hsl(236, 9%, 61%)";
+      para.style.textDecoration = "line-through";
+    }
+
+    else {
+      checkbox.style.background = "hsl(0, 0%, 98%)";
+      para.style.color = "hsl(235, 19%, 35%)";
+      para.style.textDecoration = "none";
+    }
+    
+  });
+  
+}
