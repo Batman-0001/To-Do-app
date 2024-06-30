@@ -1,103 +1,115 @@
-//adding the toggle feature in the website
+// Theme toggle feature
 const themeToggle = document.querySelector('.theme-toggle');
 const themeIcon = document.querySelector('.theme-icon');
-
-
-themeToggle.addEventListener('click', () => {
-  
-  //selecting the specific class by addition of which toggle will occur
-  const isDark = document.body.classList.toggle('dark');
-  
-  //changing the background image dynamically by using toggle
-  if (isDark) {
-    themeIcon.src = './images/icon-sun.svg';
-    themeIcon.alt = 'dark-mode';
-
-  } else {
-    themeIcon.src = './images/icon-moon.svg';
-    themeIcon.alt = 'light-mode';
-  }
-
-});
-
-
-//adding crud application feature in website
 const input = document.querySelector(".inputbox input");
 const tasks = document.querySelector(".tasks");
 
+// Adding references for footer feautures
+const itemsLeft = document.querySelector(".one p");
+const filterAll = document.querySelector(".two p:nth-child(1)");
+const filterActive = document.querySelector(".two p:nth-child(2)");
+const filterCompleted = document.querySelector(".two p:nth-child(3)");
+const clearCompleted = document.querySelector(".three p");
 
-//adding event listener to the input box and add the functionality
-input.addEventListener("keydown", (e) => {
-  if (e.key === 'Enter' && input.value !== "") {
-
-    createTask(tasks);
-
-    input.value = "";
-    
-    addDragAndDrop(tasks);
-
-  }
-  
+themeToggle.addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('dark');
+  themeIcon.src = isDark ? './images/icon-sun.svg' : './images/icon-moon.svg';
+  themeIcon.alt = isDark ? 'dark-mode' : 'light-mode';
 });
 
+// Adding CRUD application feature in the website
+input.addEventListener("keydown", (e) => {
+  if (e.key === 'Enter' && input.value !== "") {
+    createTask(tasks);
+    input.value = "";
+    updateItemsLeft(); // Update item count
+    addDragAndDrop(tasks);
+  }
+});
 
-//creating a task
+// Creating a task
 function createTask(tasks) {
-    const task = document.createElement("div");
-    const checkbox = document.createElement("div");
-    const para = document.createElement("p");
-    const image = document.createElement("img");
-    
-    task.setAttribute("class", "task");
-    checkbox.setAttribute("class", "check");
-    image.setAttribute("src","./images/icon-cross.svg");
-    image.setAttribute("alt", "delete the task");
+  const task = document.createElement("div");
+  const checkbox = document.createElement("div");
+  const para = document.createElement("p");
+  const image = document.createElement("img");
+  
+  task.setAttribute("class", "task");
+  checkbox.setAttribute("class", "check");
+  image.setAttribute("src", "./images/icon-cross.svg");
+  image.setAttribute("alt", "delete the task");
 
-    para.textContent = input.value;
+  para.textContent = input.value;
 
-    task.appendChild(checkbox);
-    task.appendChild(para);
-    task.appendChild(image);
-    
-    tasks.appendChild(task);
-
-    addEventListeners(task);
+  task.appendChild(checkbox);
+  task.appendChild(para);
+  task.appendChild(image);
+  
+  tasks.appendChild(task);
+  addEventListeners(task);
 }
 
-
-//adding event listeners to the elements
+// Adding event listeners to the elements
 function addEventListeners(task) {
-
   const checkbox = task.querySelector(".check");
   const para = task.querySelector("p");
   const image = task.querySelector("img");
   
   image.addEventListener("click", (e) => {
     e.currentTarget.parentNode.remove();
+    updateItemsLeft(); // Update item count
   });
 
   checkbox.addEventListener("click", () => {
     const checked = checkbox.classList.toggle("checked");
-    const paraColor = para.style.color;
-    const paraBgColor = para.style.background;
-    if(checked) {
-      checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))";
+    if (checked) {
+      checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%))";
       para.style.color = "hsl(236, 9%, 61%)";
       para.style.textDecoration = "line-through";
-    }
-
-    else {
-      checkbox.style.background = paraBgColor;
-      para.style.color = paraColor;
+    } else {
+      checkbox.style.background = "";
+      para.style.color = "";
       para.style.textDecoration = "none";
     }
-    
+    updateItemsLeft(); // Update item count
   });
-  
 }
 
+// New function to update the items left count
+function updateItemsLeft() {
+  const totalTasks = tasks.querySelectorAll(".task").length;
+  const completedTasks = tasks.querySelectorAll(".task .checked").length;
+  itemsLeft.textContent = `${totalTasks - completedTasks} items left`;
+}
 
-//adding the drag and drop feature to the app
+// Added event listeners for filters
+filterAll.addEventListener("click", () => {
+  tasks.querySelectorAll(".task").forEach(task => {
+    task.style.display = "flex";
+  });
+});
+
+filterActive.addEventListener("click", () => {
+  tasks.querySelectorAll(".task").forEach(task => {
+    task.style.display = task.querySelector(".check").classList.contains("checked") ? "none" : "flex";
+  });
+});
+
+filterCompleted.addEventListener("click", () => {
+  tasks.querySelectorAll(".task").forEach(task => {
+    task.style.display = task.querySelector(".check").classList.contains("checked") ? "flex" : "none";
+  });
+});
+
+// Added clear completed functionality
+clearCompleted.addEventListener("click", () => {
+  tasks.querySelectorAll(".task .checked").forEach(task => {
+    task.parentNode.remove();
+  });
+  updateItemsLeft(); // Update item count
+});
+
+// Adding the drag and drop feature to the app
 let draggable;
 
 function addDragAndDrop(tasks) {
@@ -112,12 +124,11 @@ function addDragAndDrop(tasks) {
 }
 
 function dragStart(event) {
-    event.dataTransfer.setData("text/html", event.currentTarget.innerHTML);
-    event.dataTransfer.effectAllowed = "move";
-    addEventListeners(event.currentTarget);  
+  event.dataTransfer.setData("text/html", event.currentTarget.innerHTML);
+  event.dataTransfer.effectAllowed = "move";
 }
 
-function dragEnter(event){
+function dragEnter(event) {
   event.preventDefault();
 }
 
@@ -139,6 +150,3 @@ function dragEnd(event) {
   addEventListeners(event.currentTarget);
   event.preventDefault();
 }
-
-
-

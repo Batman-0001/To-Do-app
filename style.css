@@ -1,24 +1,23 @@
 :root {
-    /*primary color*/
+    /* Primary color */
     --bright-blue: hsl(220, 98%, 61%);
 
-    /*light mode colors*/
+    /* Light mode colors */
     --very-light-grey: hsl(0, 0%, 98%);
     --very-light-grayish-blue: hsl(236, 33%, 92%);
-    --light-grayish-blue: hsl(233, 11%, 84%);
-    --dark-grayish-blue: hsl(236, 9%, 61%);
-    --very-dark-grayish-blue: hsl(235, 19%, 35%);
+    --light-grayish-blue-light: hsl(233, 11%, 84%);
+    --dark-grayish-blue-light: hsl(236, 9%, 61%);
+    --very-dark-grayish-blue-light: hsl(235, 19%, 35%);
 
-    /*dark mode colors*/
+    /* Dark mode colors */
     --very-dark-blue: hsl(235, 21%, 11%);
     --very-dark-desaturated-blue: hsl(235, 24%, 19%);
-    --light-grayish-blue: hsl(234, 39%, 85%);
+    --light-grayish-blue-dark: hsl(234, 39%, 85%);
+    --dark-grayish-blue-dark: hsl(234, 11%, 52%);
+    --very-dark-grayish-blue-dark: hsl(233, 14%, 35%);
     --light-grayish-blue-onhover: hsl(236, 33%, 92%);
-    --dark-grayish-blue: hsl(234, 11%, 52%);
-    --very-dark-grayish-blue: hsl(233, 14%, 35%);
 }
 
-/*body of the html document*/
 body {
     width: 100vw;
     min-height: 100vh;
@@ -26,23 +25,22 @@ body {
     position: relative;
     font-family: "Josefin Sans";
     font-weight: 400;
-    /*image tag inside the body*/
-    .bg-image {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 40%;
-        background-image: url("./images/bg-desktop-light.jpg");
-        background-size: cover;
-        background-position: center; 
-        background-repeat: no-repeat; 
-        z-index: -1;
-        transition: background-image 0.5s;
-    }    
 }
 
-/*main container which contains all the sections*/
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-image: url("./images/bg-desktop-light.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    transition: background-image 0.5s;
+}
+
 main.container {
     width: 40%;
     display: grid;
@@ -51,190 +49,168 @@ main.container {
     position: absolute;
     left: 30%;
     top: 10%;
-
-    /*this is the header of the main body*/
-    section.header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: var(--very-light-grey);
-        font-weight: 700;
-        font-size: 1.5em;
-        letter-spacing: .5em;
-    }
-
-    /*this is the input container present in the body*/
-    section.inputbox{
-        display: grid;
-        grid-template-columns: 0.5fr 5fr;
-        background-color: var(--very-light-grey);
-        border-radius: 0.3em;
-
-        /*this is the custom checkbox*/
-        div.checkbox {
-            height: 1.4em;
-            width: 1.4em;
-            border-radius: 50%;
-            border: 1.5px solid var(--light-grayish-blue);
-            align-self: center;
-            justify-self: center;
-        }
-
-        /*this is the input element*/
-        input {
-            width: 90%;
-            font-family: "Josefin Sans";
-            font-size: 1.3em;
-            border: none;
-            align-self: center;
-            justify-self: self-start;
-            background-color: var(--very-light-grey);
-            color: var(--very-dark-grayish-blue);
-        }
-
-        /*this is the input when focused*/
-        input:focus {
-            outline: none;
-            caret-color: var(--bright-blue);
-        }
-    }
-
-    /*this is the task and switches section*/
-    section.task-n-switches {
-        display: grid;
-        grid-template-rows: auto 1fr;
-        background-color: var(--very-light-grey);
-        border-radius: 0.3em;
-
-        section.tasks {
-            color: var(--very-dark-grayish-blue);
-
-            div.task {
-                display: grid;
-                grid-template-columns: 0.5fr 5fr 0.5fr;
-                border-bottom: 1px solid var(--light-grayish-blue);
-                cursor: pointer;
-
-                .check {
-                    height: 1.4em;
-                    width: 1.4em;
-                    border: 1px solid var(--light-grayish-blue);
-                    position: relative;
-                    border-radius: 50%;
-                    align-self: center;
-                    justify-self: center;
-                }
-                
-                p {
-                    font-size: 1.3em;
-                }
-
-                img {
-                    align-self: center;
-                    justify-self: center;
-                    visibility: hidden;
-                }
-            }
-
-            div.task:hover{
-                
-                img {
-                    visibility: visible;
-                }
-            }
-        }
-        
-        /*this is the section for switches*/
-        section.switches {
-           display: grid;
-           grid-template-columns: 1fr 3fr 1.3fr;
-           color: var(--dark-grayish-blue);
-
-           /*targets all the divs*/
-           div {
-            align-self: center;
-            justify-self: center;
-            cursor: pointer;
-           }
-
-           div p:hover{
-            color: var(--very-dark-grayish-blue);
-           }
-
-           /*targets second div*/
-           div.two{
-            display: grid;
-            grid-template-columns: 0.8fr 1fr 1fr;
-            font-weight: 700;
-           }
-        }
-    }
-    
 }
 
-/*this targets the foot-note div at the bottom of the main container*/
-div.foot-note {
-    text-align: center;
-    font-size: 1em;
-    color: var(--dark-grayish-blue);
+section.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--very-light-grey);
+    font-weight: 700;
+    font-size: 1.5em;
+    letter-spacing: 0.5em;
+}
+
+section.inputbox {
+    display: grid;
+    grid-template-columns: 0.5fr 5fr;
+    background-color: var(--very-light-grey);
+    border-radius: 0.3em;
+}
+
+div.checkbox {
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 50%;
+    border: 1.5px solid var(--light-grayish-blue-light);
+    align-self: center;
+    justify-self: center;
+}
+
+section.inputbox input {
+    width: 90%;
+    font-family: "Josefin Sans";
+    font-size: 1.3em;
+    border: none;
+    align-self: center;
+    justify-self: start;
+    background-color: var(--very-light-grey);
+    color: var(--very-dark-grayish-blue-light);
+}
+
+section.inputbox input:focus {
+    outline: none;
+    caret-color: var(--bright-blue);
+}
+
+section.task-n-switches {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: var(--very-light-grey);
+    border-radius: 0.3em;
+}
+
+section.tasks {
+    color: var(--very-dark-grayish-blue-light);
+}
+
+div.task {
+    display: grid;
+    grid-template-columns: 0.5fr 5fr 0.5fr;
+    border-bottom: 1px solid var(--light-grayish-blue-light);
+    cursor: pointer;
+}
+
+div.check {
+    height: 1.4em;
+    width: 1.4em;
+    border: 1px solid var(--light-grayish-blue-light);
+    position: relative;
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+}
+
+div.task p {
+    font-size: 1.3em;
+}
+
+div.task img {
+    align-self: center;
+    justify-self: center;
+    visibility: hidden;
+}
+
+div.task:hover img {
+    visibility: visible;
+}
+
+section.switches {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1.3fr;
+    color: var(--dark-grayish-blue-light);
+}
+
+section.switches div {
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
+}
+
+section.switches div p:hover {
+    color: var(--very-dark-grayish-blue-light);
+}
+
+div.two {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 1fr;
     font-weight: 700;
 }
 
-/*this is the styling of the dark mode of the website*/
+div.foot-note {
+    text-align: center;
+    font-size: 1em;
+    color: var(--dark-grayish-blue-light);
+    font-weight: 700;
+}
 
 body.dark {
     background-color: var(--very-dark-blue);
-
-    .bg-image {
-        background-image: url("./images/bg-desktop-dark.jpg");
-    }
 }
 
-body.dark main.container {
+body.dark .bg-image {
+    background-image: url("./images/bg-desktop-dark.jpg");
+}
 
-    section.inputbox {
-        background-color: var(--very-dark-desaturated-blue);
-        
-        div.checkbox {
-            background-color: var(--very-dark-desaturated-blue);
-            border-color: var(--dark-grayish-blue);
-        }
+body.dark main.container section.inputbox {
+    background-color: var(--very-dark-desaturated-blue);
+}
 
-        input {
-            background-color: var(--very-dark-desaturated-blue);
-            color: var(--light-grayish-blue);
-        }
-    }
+body.dark div.checkbox {
+    background-color: var(--very-dark-desaturated-blue);
+    border-color: var(--dark-grayish-blue-dark);
+}
 
-    section.task-n-switches {
-        background-color: var(--very-dark-desaturated-blue);
+body.dark section.inputbox input {
+    background-color: var(--very-dark-desaturated-blue);
+    color: var(--light-grayish-blue-dark);
+}
 
-        section.tasks {
-            color: var(--light-grayish-blue);
+body.dark section.task-n-switches {
+    background-color: var(--very-dark-desaturated-blue);
+}
 
-            div.task {
-                border-bottom: 1px solid var(--dark-grayish-blue);
+body.dark section.tasks {
+    color: var(--light-grayish-blue-dark);
+}
 
-                .check {
-                    border-color: var(--dark-grayish-blue);
-                }
-                
-            }
-        }
+body.dark div.task {
+    border-bottom: 1px solid var(--dark-grayish-blue-dark);
+}
 
-        section.switches {
-            color: var(--dark-grayish-blue);
+body.dark div.check {
+    border-color: var(--dark-grayish-blue-dark);
+}
 
-            div p:hover {
-                color: var(--light-grayish-blue-onhover);
-            }
-        }
-    }
+body.dark section.switches {
+    color: var(--dark-grayish-blue-dark);
+}
+
+body.dark section.switches div p:hover {
+    color: var(--light-grayish-blue-onhover);
 }
 
 body.dark div.foot-note {
-    color: var(--dark-grayish-blue);
+    color: var(--dark-grayish-blue-dark);
 }
-
-
 
