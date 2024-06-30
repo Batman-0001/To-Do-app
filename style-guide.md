@@ -50,26 +50,3 @@ The designs were created to the following widths:
 > 💎 [Upgrade to Pro](https://www.frontendmentor.io/pro?ref=style-guide) for design file access to see all design details and get hands-on experience using a professional workflow with tools like Figma.
 
 
-const bgImage = document.querySelector('.bg-image');
-
-bgImage.style.backgroundImage = 'url("./images/bg-desktop-dark.jpg")';
-
-  task.querySelectorAll(".check").forEach((item) => {
-     
-    });
-    task.querySelectorAll("p").forEach((item) => {
-      item.setAttribute("draggable", "true");
-      item.addEventListener("dragstart", dragStart);
-      item.addEventListener("dragenter", dragEnter);
-      item.addEventListener("dragover", dragOver);
-      item.addEventListener("drop", drop);
-      item.addEventListener("dragend", dragEnd);
-    });
-    task.querySelectorAll("img").forEach((item) => {
-      item.setAttribute("draggable", "true");
-      item.addEventListener("dragstart", dragStart);
-      item.addEventListener("dragenter", dragEnter);
-      item.addEventListener("dragover", dragOver);
-      item.addEventListener("drop", drop);
-      item.addEventListener("dragend", dragEnd);
-    });

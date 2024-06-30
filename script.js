@@ -4,6 +4,7 @@ const themeIcon = document.querySelector('.theme-icon');
 
 
 themeToggle.addEventListener('click', () => {
+  
   //selecting the specific class by addition of which toggle will occur
   const isDark = document.body.classList.toggle('dark');
   
@@ -19,14 +20,29 @@ themeToggle.addEventListener('click', () => {
 
 });
 
+
 //adding crud application feature in website
 const input = document.querySelector(".inputbox input");
 const tasks = document.querySelector(".tasks");
+
 
 //adding event listener to the input box and add the functionality
 input.addEventListener("keydown", (e) => {
   if (e.key === 'Enter' && input.value !== "") {
 
+    createTask(tasks);
+
+    input.value = "";
+    
+    addDragAndDrop(tasks);
+
+  }
+  
+});
+
+
+//creating a task
+function createTask(tasks) {
     const task = document.createElement("div");
     const checkbox = document.createElement("div");
     const para = document.createElement("p");
@@ -36,8 +52,8 @@ input.addEventListener("keydown", (e) => {
     checkbox.setAttribute("class", "check");
     image.setAttribute("src","./images/icon-cross.svg");
     image.setAttribute("alt", "delete the task");
+
     para.textContent = input.value;
-    input.value = "";
 
     task.appendChild(checkbox);
     task.appendChild(para);
@@ -46,22 +62,12 @@ input.addEventListener("keydown", (e) => {
     tasks.appendChild(task);
 
     addEventListeners(task);
+}
 
-    tasks.querySelectorAll(".task").forEach((item) => {
-      item.setAttribute("draggable", "true");
-      item.addEventListener("dragstart", dragStart);
-      item.addEventListener("dragenter", dragEnter);
-      item.addEventListener("dragover", dragOver);
-      item.addEventListener("drop", drop);
-      item.addEventListener("dragend", dragEnd);
-    }); 
-
-  }
-  
-});
 
 //adding event listeners to the elements
 function addEventListeners(task) {
+
   const checkbox = task.querySelector(".check");
   const para = task.querySelector("p");
   const image = task.querySelector("img");
@@ -72,7 +78,8 @@ function addEventListeners(task) {
 
   checkbox.addEventListener("click", () => {
     const checked = checkbox.classList.toggle("checked");
-
+    const paraColor = para.style.color;
+    const paraBgColor = para.style.background;
     if(checked) {
       checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))";
       para.style.color = "hsl(236, 9%, 61%)";
@@ -80,8 +87,8 @@ function addEventListeners(task) {
     }
 
     else {
-      checkbox.style.background = "hsl(0, 0%, 98%)";
-      para.style.color = "hsl(235, 19%, 35%)";
+      checkbox.style.background = paraBgColor;
+      para.style.color = paraColor;
       para.style.textDecoration = "none";
     }
     
@@ -90,8 +97,19 @@ function addEventListeners(task) {
 }
 
 
-//ading the drag and drop feature to the app
+//adding the drag and drop feature to the app
 let draggable;
+
+function addDragAndDrop(tasks) {
+  tasks.querySelectorAll(".task").forEach((item) => {
+    item.setAttribute("draggable", "true");
+    item.addEventListener("dragstart", dragStart);
+    item.addEventListener("dragenter", dragEnter);
+    item.addEventListener("dragover", dragOver);
+    item.addEventListener("drop", drop);
+    item.addEventListener("dragend", dragEnd);
+  }); 
+}
 
 function dragStart(event) {
     event.dataTransfer.setData("text/html", event.currentTarget.innerHTML);
@@ -121,4 +139,6 @@ function dragEnd(event) {
   addEventListeners(event.currentTarget);
   event.preventDefault();
 }
+
+
 
