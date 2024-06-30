@@ -75,11 +75,13 @@ function addEventListeners(task) {
   image.addEventListener("click", (e) => {
     e.currentTarget.parentNode.remove();
   });
+  
+  const paraColor = input.style.color;
+  const paraBgColor = para.style.background;
 
   checkbox.addEventListener("click", () => {
     const checked = checkbox.classList.toggle("checked");
-    const paraColor = para.style.color;
-    const paraBgColor = para.style.background;
+    
     if(checked) {
       checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))";
       para.style.color = "hsl(236, 9%, 61%)";
@@ -139,6 +141,5 @@ function dragEnd(event) {
   addEventListeners(event.currentTarget);
   event.preventDefault();
 }
-
 
 

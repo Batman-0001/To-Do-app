@@ -127,6 +127,7 @@ main.container {
                 
                 p {
                     font-size: 1.3em;
+                    color: var(--very-dark-grayish-blue);
                 }
 
                 img {
@@ -210,13 +211,17 @@ body.dark main.container {
         background-color: var(--very-dark-desaturated-blue);
 
         section.tasks {
-            color: var(--light-grayish-blue);
+            color: var(--light-grayish-blue-onhover);
 
             div.task {
                 border-bottom: 1px solid var(--dark-grayish-blue);
 
                 .check {
                     border-color: var(--dark-grayish-blue);
+                }
+
+                p{
+                    color: var(--light-grayish-blue);
                 }
                 
             }
