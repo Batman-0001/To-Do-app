@@ -156,6 +156,8 @@ function displayData() {
         
             addEventListeners(task);
 
+            addDragAndDrop(tasks);
+
             cursor.continue();
         }
     });
@@ -278,4 +280,80 @@ function deleteItem(event) {
     console.log("deletion failed.");
   });
 }
+
+
+
+//adding drag and drop
+//adding the drag and drop feature to the app
+let draggable;
+
+function addDragAndDrop(tasks) {
+  tasks.querySelectorAll(".task").forEach((item) => {
+    item.setAttribute("draggable", "true");
+    item.addEventListener("dragstart", dragStart);
+    item.addEventListener("dragenter", dragEnter);
+    item.addEventListener("dragover", dragOver);
+    item.addEventListener("drop", drop);
+    item.addEventListener("dragend", dragEnd);
+  }); 
+}
+
+function dragStart(event) {
+    event.dataTransfer.setData("text/html", event.currentTarget.innerHTML);
+    event.dataTransfer.effectAllowed = "move";
+    addEventListeners(event.currentTarget);  
+}
+
+function dragEnter(event){
+  event.preventDefault();
+}
+
+function dragOver(event) {
+  event.preventDefault();
+}
+
+function drop(event) {
+  draggable = event.currentTarget.innerHTML;
+  const data = event.dataTransfer.getData("text/html");
+  event.dataTransfer.dropEffect = "move";
+  event.currentTarget.innerHTML = data;
+  addEventListeners(event.currentTarget);
+  event.preventDefault();
+  updateData(event.currentTarget);
+  saveData(event.currentTarget.querySelector(".check"));
+}
+
+function dragEnd(event) {
+  event.currentTarget.innerHTML = draggable;
+  addEventListeners(event.currentTarget);
+  event.preventDefault();
+  updateData(event.currentTarget);
+  saveData(event.currentTarget.querySelector(".check"));
+}
+
+function updateData(task) {
+  const transaction = db.transaction(osName, "readwrite");
+  const objectStore = transaction.objectStore(osName);
+
+  const request = objectStore.get(Number(task.getAttribute("data-note-id")));
+
+  request.addEventListener("success", (event) => {
+    const data = event.target.result;
+
+    data.task = task.querySelector("p").textContent;
+
+    const requestUpdate = objectStore.put(data);
+
+    requestUpdate.addEventListener("success", () => {
+      console.log("data updated successfully.");
+    });
+
+  });
+
+  request.addEventListener("error", () => {
+    console.log("data updation failed.");
+  });
+
+}
+
 
