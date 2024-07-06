@@ -4,6 +4,7 @@ const tNSw = document.querySelector(".task-n-switches");
 const themeToggle = document.querySelector('.theme-toggle');
 const themeIcon = document.querySelector('.theme-icon');
 const itemsLeft = document.querySelector('.one p');
+const clearComplete = document.querySelector('.three p');
 const body = document.body;
 let count;
 
@@ -450,4 +451,28 @@ function createTask(cursor) {
   addDragAndDrop(tasks);
   count++;
 }
+
+
+//clear complete feature
+clearComplete.addEventListener("click", (event) => {
+  const transaction = db.transaction(osName, "readwrite");
+  const objectStore = transaction.objectStore(osName);
+
+  objectStore.openCursor().addEventListener("success", (event) => {
+    let cursor = event.target.result;
+    
+    if(cursor) {
+      if (cursor.value.txDec !== "none") {
+        const noteId = cursor.value.id;
+        const deleteRequest = objectStore.delete(noteId);
+        deleteRequest.addEventListener("success", () => {
+          tasks.removeChild(tasks.querySelector(`div[data-note-id="${noteId}"]`));
+          count--;
+        });
+      }
+      cursor.continue();
+    }
+    itemsLeft.textContent = `${count} items left`;
+  });
+});
 
