@@ -3,8 +3,9 @@ const tasks = document.querySelector(".tasks");
 const tNSw = document.querySelector(".task-n-switches");
 const themeToggle = document.querySelector('.theme-toggle');
 const themeIcon = document.querySelector('.theme-icon');
+const itemsLeft = document.querySelector('.one p');
 const body = document.body;
-
+let count;
 
 const osName = "we_os1";
 const osName2 = "we_os2";
@@ -110,6 +111,7 @@ function addData(event) {
 
 
 function displayData() {
+    count = 0;
     while (tasks.firstChild) {
         tasks.removeChild(tasks.firstChild);
     }
@@ -129,37 +131,11 @@ function displayData() {
     let objectStore = transaction.objectStore(osName);
     objectStore.openCursor().addEventListener("success", (event) => {
         let cursor = event.target.result;
-
         if(cursor) {
-            const task = document.createElement("div");
-            const checkbox = document.createElement("div");
-            const para = document.createElement("p");
-            const image = document.createElement("img");
-            
-            task.setAttribute("class", "task");
-            checkbox.setAttribute("class", "check");
-            image.setAttribute("src","./images/icon-cross.svg");
-            image.setAttribute("alt", "delete the task");
-            task.setAttribute("data-note-id", cursor.value.id);
-
-            para.textContent = cursor.value.task;
-            para.style.color = cursor.value.txColor;
-            para.style.textDecoration = cursor.value.txDec;
-            checkbox.style.background = cursor.value.bgColor;
-            checkbox.classList.add(cursor.value.cbClass);
-            
-            task.appendChild(checkbox);
-            task.appendChild(para);
-            task.appendChild(image);
-            
-            tasks.appendChild(task);
-        
-            addEventListeners(task);
-
-            addDragAndDrop(tasks);
-
+            createTask(cursor);
             cursor.continue();
         }
+        itemsLeft.textContent = `${count} items left`;
     });
 
 }
@@ -356,4 +332,122 @@ function updateData(task) {
 
 }
 
+//filteration system
+const all = document.querySelector(".all");
+const active = document.querySelector(".active");
+const completed = document.querySelector(".completed");
+
+
+all.addEventListener("click", displayAll);
+active.addEventListener("click", displayActive);
+completed.addEventListener("click", displayCompleted);
+
+
+const color = all.style.color;
+
+function displayAll(event) {
+  const button = event.currentTarget;
+  const allClicked = button.classList.toggle("clicked");
+  active.classList.remove("clicked");
+  completed.classList.remove("clicked");
+
+  if (allClicked) {
+    displayData();
+  } else {
+    displayData();
+  }
+
+}
+
+function displayActive(event) {
+  const button = event.currentTarget;
+  const activeClicked = button.classList.toggle("clicked");
+  all.classList.remove("clicked");
+  completed.classList.remove("clicked");
+
+  if (activeClicked) {
+    count = 0;
+    while (tasks.firstChild) {
+      tasks.removeChild(tasks.firstChild);
+    }
+    const transaction = db.transaction(osName, "readwrite");
+    const objectStore = transaction.objectStore(osName);
+
+    objectStore.openCursor().addEventListener("success", (event) => {
+      let cursor = event.target.result;
+      
+      if(cursor) {
+        if (cursor.value.txDec !== "line-through") {
+          createTask(cursor);
+        }
+        cursor.continue();
+      }
+      itemsLeft.textContent = `${count} items left`;
+    });
+  } else {
+    displayData();
+  } 
+}
+
+function displayCompleted(event) {
+  const button = event.currentTarget;
+  const completedClicked = button.classList.toggle("clicked");
+  all.classList.remove("clicked");
+  active.classList.remove("clicked");
+
+  if (completedClicked) {
+    count = 0;
+    while (tasks.firstChild) {
+      tasks.removeChild(tasks.firstChild);
+    }
+    const transaction = db.transaction(osName, "readwrite");
+    const objectStore = transaction.objectStore(osName);
+
+    objectStore.openCursor().addEventListener("success", (event) => {
+      let cursor = event.target.result;
+      
+      if(cursor) {
+        if (cursor.value.txDec === "line-through") {  
+            createTask(cursor);
+        }
+        cursor.continue();
+      }
+      itemsLeft.textContent = `${count} items left`;
+    });
+
+  } else {
+    displayData();
+  }
+}
+
+//create tasks to add to database
+function createTask(cursor) {
+  const task = document.createElement("div");
+  const checkbox = document.createElement("div");
+  const para = document.createElement("p");
+  const image = document.createElement("img");
+  
+  task.setAttribute("class", "task");
+  checkbox.setAttribute("class", "check");
+  image.setAttribute("src","./images/icon-cross.svg");
+  image.setAttribute("alt", "delete the task");
+  task.setAttribute("data-note-id", cursor.value.id);
+
+  para.textContent = cursor.value.task;
+  para.style.color = cursor.value.txColor;
+  para.style.textDecoration = cursor.value.txDec;
+  checkbox.style.background = cursor.value.bgColor;
+  checkbox.classList.add(cursor.value.cbClass);
+  
+  task.appendChild(checkbox);
+  task.appendChild(para);
+  task.appendChild(image);
+  
+  tasks.appendChild(task);
+        
+  addEventListeners(task);
+
+  addDragAndDrop(tasks);
+  count++;
+}
 

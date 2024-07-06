@@ -162,6 +162,15 @@ main.container {
             color: var(--very-dark-grayish-blue);
            }
 
+           div p.clicked {
+            color: var(--bright-blue);
+           }
+
+           div p.clicked:hover {
+            color: var(--bright-blue);
+           }
+
+
            /*targets second div*/
            div.two{
             display: grid;
