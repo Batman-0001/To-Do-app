@@ -166,11 +166,6 @@ main.container {
             color: var(--bright-blue);
            }
 
-           div p.clicked:hover {
-            color: var(--bright-blue);
-           }
-
-
            /*targets second div*/
            div.two{
             display: grid;
@@ -248,6 +243,42 @@ body.dark main.container {
 
 body.dark div.foot-note {
     color: var(--dark-grayish-blue);
+}
+
+/*adding responsivity to the website*/
+@media screen and (max-width: 1250px) {
+    main.container {
+        width: 50%;
+        left: 25%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    main.container {
+        width: 65%;
+        left: 18%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    main.container {
+        width: 75%;
+        left: 13%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    main.container {
+        width: 85%;
+        left: 8%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    main.container {
+        width: 100%;
+        left: 0;
+    }
 }
 
 
