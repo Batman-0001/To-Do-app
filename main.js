@@ -251,6 +251,8 @@ function deleteItem(event) {
 
   transaction.addEventListener("complete", () => {
     event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+    count--;
+    itemsLeft.textContent = `${count} items left`;
   });
 
   transaction.addEventListener("error", () => {
