@@ -51,6 +51,7 @@ main.container {
     position: absolute;
     left: 30%;
     top: 10%;
+    box-shadow: 5px;
 
     /*this is the header of the main body*/
     section.header {
@@ -89,7 +90,10 @@ main.container {
             align-self: center;
             justify-self: self-start;
             background-color: var(--very-light-grey);
+<<<<<<< HEAD
             color: var(--very-dark-grayish-blue);
+=======
+>>>>>>> main
         }
 
         /*this is the input when focused*/
@@ -113,7 +117,10 @@ main.container {
                 display: grid;
                 grid-template-columns: 0.5fr 5fr 0.5fr;
                 border-bottom: 1px solid var(--light-grayish-blue);
+<<<<<<< HEAD
                 cursor: pointer;
+=======
+>>>>>>> main
 
                 .check {
                     height: 1.4em;
@@ -127,12 +134,16 @@ main.container {
                 
                 p {
                     font-size: 1.3em;
+<<<<<<< HEAD
                     color: var(--very-dark-grayish-blue);
+=======
+>>>>>>> main
                 }
 
                 img {
                     align-self: center;
                     justify-self: center;
+<<<<<<< HEAD
                     visibility: hidden;
                 }
             }
@@ -141,6 +152,8 @@ main.container {
                 
                 img {
                     visibility: visible;
+=======
+>>>>>>> main
                 }
             }
         }
@@ -160,10 +173,13 @@ main.container {
 
            div p:hover{
             color: var(--very-dark-grayish-blue);
+<<<<<<< HEAD
            }
 
            div p.clicked {
             color: var(--bright-blue);
+=======
+>>>>>>> main
            }
 
            /*targets second div*/
@@ -280,6 +296,5 @@ body.dark div.foot-note {
         left: 0;
     }
 }
-
 
 
