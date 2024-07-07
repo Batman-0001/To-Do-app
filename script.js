@@ -12,7 +12,7 @@ const osName = "we_os1";
 const osName2 = "we_os2";
 let db;
 
-const openRequest = window.indexedDB.open("ex_db", 4);
+const openRequest = window.indexedDB.open("new_db", 1);
 
 openRequest.addEventListener("success", (event) => {
     db = event.target.result;
@@ -50,7 +50,6 @@ openRequest.addEventListener("upgradeneeded", (event) => {
 
     console.log("datastore creation successful.");
 
-    addData2();
 });
 
 
@@ -182,7 +181,7 @@ themeToggle.addEventListener('click', (event) => {
   
   //selecting the specific class by addition of which toggle will occur
   const isDark = document.body.classList.toggle('dark');
-  
+  addData2();
   //changing the background image dynamically by using toggle
   if (isDark) {
     themeIcon.src = './images/icon-sun.svg';
