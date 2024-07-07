@@ -134,6 +134,7 @@ function displayData() {
         let cursor = event.target.result;
         if(cursor) {
             createTask(cursor);
+            count++;
             cursor.continue();
         }
         itemsLeft.textContent = `${count} items left`;
@@ -159,6 +160,7 @@ function addEventListeners(task) {
         checkbox.style.background = "url('./images/icon-check.svg') center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))";
         para.style.color = "hsl(236, 9%, 61%)";
         para.style.textDecoration = "line-through";
+        count--;
         saveData(event.currentTarget);
       }
   
@@ -166,8 +168,10 @@ function addEventListeners(task) {
         checkbox.style.background = paraBgColor;
         para.style.color = paraColor;
         para.style.textDecoration = "none";
+        count++;
         saveData(event.currentTarget);
       }
+      itemsLeft.textContent = `${count} items left`;
       
     });
     
@@ -382,6 +386,7 @@ function displayActive(event) {
       if(cursor) {
         if (cursor.value.txDec !== "line-through") {
           createTask(cursor);
+          count++;
         }
         cursor.continue();
       }
@@ -412,6 +417,7 @@ function displayCompleted(event) {
       if(cursor) {
         if (cursor.value.txDec === "line-through") {  
             createTask(cursor);
+            count++;
         }
         cursor.continue();
       }
@@ -451,7 +457,6 @@ function createTask(cursor) {
   addEventListeners(task);
 
   addDragAndDrop(tasks);
-  count++;
 }
 
 

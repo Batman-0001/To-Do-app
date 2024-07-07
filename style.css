@@ -90,10 +90,7 @@ main.container {
             align-self: center;
             justify-self: self-start;
             background-color: var(--very-light-grey);
-<<<<<<< HEAD
             color: var(--very-dark-grayish-blue);
-=======
->>>>>>> main
         }
 
         /*this is the input when focused*/
@@ -117,10 +114,7 @@ main.container {
                 display: grid;
                 grid-template-columns: 0.5fr 5fr 0.5fr;
                 border-bottom: 1px solid var(--light-grayish-blue);
-<<<<<<< HEAD
                 cursor: pointer;
-=======
->>>>>>> main
 
                 .check {
                     height: 1.4em;
@@ -134,16 +128,12 @@ main.container {
                 
                 p {
                     font-size: 1.3em;
-<<<<<<< HEAD
                     color: var(--very-dark-grayish-blue);
-=======
->>>>>>> main
                 }
 
                 img {
                     align-self: center;
                     justify-self: center;
-<<<<<<< HEAD
                     visibility: hidden;
                 }
             }
@@ -152,8 +142,6 @@ main.container {
                 
                 img {
                     visibility: visible;
-=======
->>>>>>> main
                 }
             }
         }
@@ -166,20 +154,17 @@ main.container {
 
            /*targets all the divs*/
            div {
+            text-align: center;
             align-self: center;
-            justify-self: center;
             cursor: pointer;
            }
 
            div p:hover{
             color: var(--very-dark-grayish-blue);
-<<<<<<< HEAD
            }
 
            div p.clicked {
             color: var(--bright-blue);
-=======
->>>>>>> main
            }
 
            /*targets second div*/
@@ -187,6 +172,7 @@ main.container {
             display: grid;
             grid-template-columns: 0.8fr 1fr 1fr;
             font-weight: 700;
+            background-color: var(--very-light-grey);
            }
         }
     }
@@ -253,6 +239,10 @@ body.dark main.container {
             div p:hover {
                 color: var(--light-grayish-blue-onhover);
             }
+
+            div.two {
+                background-color: var(--very-dark-desaturated-blue);
+            }
         }
     }
 }
@@ -263,7 +253,7 @@ body.dark div.foot-note {
 
 /*adding responsivity to the website*/
 @media screen and (max-width: 1250px) {
-    main.container {
+   main.container {
         width: 50%;
         left: 25%;
     }
@@ -287,6 +277,7 @@ body.dark div.foot-note {
     main.container {
         width: 85%;
         left: 8%;
+        
     }
 }
 
