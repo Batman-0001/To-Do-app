@@ -12,7 +12,7 @@ const osName = "we_os1";
 const osName2 = "we_os2";
 let db;
 
-const openRequest = window.indexedDB.open("ex_db", 3);
+const openRequest = window.indexedDB.open("ex_db", 1);
 
 openRequest.addEventListener("success", (event) => {
     db = event.target.result;
