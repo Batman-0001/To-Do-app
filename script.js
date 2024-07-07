@@ -132,8 +132,10 @@ function displayData() {
     objectStore.openCursor().addEventListener("success", (event) => {
         let cursor = event.target.result;
         if(cursor) {
-            createTask(cursor);
+          if (cursor.value.txDec !== "line-through") {
             count++;
+          }
+            createTask(cursor);
             cursor.continue();
         }
         itemsLeft.textContent = `${count} items left`;
