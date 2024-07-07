@@ -483,3 +483,8 @@ clearComplete.addEventListener("click", (event) => {
   });
 });
 
+//preventing default touch event action
+
+body.addEventListener("touchstart", (event) => {
+  event.preventDefault();
+});
