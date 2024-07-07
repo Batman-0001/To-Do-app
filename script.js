@@ -478,12 +478,10 @@ clearComplete.addEventListener("click", (event) => {
         const deleteRequest = objectStore.delete(noteId);
         deleteRequest.addEventListener("success", () => {
           tasks.removeChild(tasks.querySelector(`div[data-note-id="${noteId}"]`));
-          count--;
         });
       }
       cursor.continue();
     }
-    itemsLeft.textContent = `${count} items left`;
   });
 });
 
