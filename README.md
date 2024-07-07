@@ -23,8 +23,8 @@ A simple and intuitive to-do application with data-saving, drag-and-drop, and th
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [check out the source code](https://github.com/Batman-0001/To-Do-app)
+- Live Site URL: [check out the live project](https://batman-0001.github.io/To-Do-app/)
 
 ## My process
 

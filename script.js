@@ -461,6 +461,9 @@ function createTask(cursor) {
 
 //clear complete feature
 clearComplete.addEventListener("click", (event) => {
+  all.classList.remove("clicked");
+  active.classList.remove("clicked");
+  completed.classList.remove("clicked");
   const transaction = db.transaction(osName, "readwrite");
   const objectStore = transaction.objectStore(osName);
 
